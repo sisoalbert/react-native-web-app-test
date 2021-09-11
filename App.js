@@ -6,7 +6,12 @@ import {
   View,
   TouchableOpacity,
   Dimensions,
+  Image,
 } from "react-native";
+
+import Page from "./components/Page";
+import ConfettiCannon from "react-native-confetti-cannon";
+import Modal from "react-native-modal";
 
 import DesktopNav from "./components/DesktopNav";
 import MobileNav from "./components/MobileNav";
@@ -36,11 +41,14 @@ export default function App() {
     return <MobileNav />;
   };
 
+  const Caboom = () => {
+    console.log("hiiiiiiiiiiiiiiiiiii");
+  };
   return (
     <View style={styles.container}>
       {/*TERNARY OPERATORS */}
       {/* {yes ? <DesktopNav /> : <MobileNav />} */}
-      {window.width > 500 ? <DesktopNav /> : <MobileNav />}
+      {window.width > 500 ? <DesktopNav /> : <MobileNav onPress={Caboom} />}
 
       {/* <View>
         {Object.entries(dimensions.window).map(([key, value]) => (
@@ -50,10 +58,48 @@ export default function App() {
 
       {/* {Nav} */}
       <View style={styles.BodyContainer}>
-        <Text>{deviceWidth}</Text>
-        <Text>{window.width}</Text>
+        <ConfettiCannon count={200} origin={{ x: -10, y: 0 }} />
+        <View>
+          <Image
+            source={{
+              uri: "https://reactiongifs.me/wp-content/uploads/2013/08/shia-labeouf-magic-gif.gif",
+            }}
+            style={{ width: 714, height: 400 }}
+          />
+        </View>
+        <Text
+          style={{
+            textAlign: "center", // <-- The magic
+            fontWeight: "bold",
+            fontSize: 40,
+            // backgroundColor: "purple",
+          }}
+        >
+          Your screen size is:
+        </Text>
+        <Text
+          style={{
+            textAlign: "center", // <-- The magic
+            fontWeight: "bold",
+            fontSize: 50,
+            color: "purple",
+          }}
+        >
+          {(window.width * (10 / 377.9527559055)).toFixed(2)}cm
+        </Text>
 
-        <Text style={styles.header}>Window Dimensions</Text>
+        <Text
+          style={{
+            textAlign: "center", // <-- The magic
+            fontWeight: "bold",
+            fontSize: 30,
+            color: "#003366",
+          }}
+        >
+          {deviceWidth}px
+        </Text>
+
+        {/* <Text style={styles.header}>Window Dimensions</Text>
         {Object.entries(dimensions.window).map(([key, value]) => (
           <Text>
             {key} - {value}
@@ -64,10 +110,12 @@ export default function App() {
           <Text>
             {key} - {value}
           </Text>
-        ))}
+        ))} */}
       </View>
       <View style={styles.copyright}>
-        <Text>React Native for Web – Copyright © Siso Ngqolosi</Text>
+        <Text>
+          I created this with React Native for Web – Copyright © Siso Ngqolosi
+        </Text>
       </View>
       <StatusBar style="auto" />
     </View>
@@ -88,8 +136,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
   },
+  tinyLogo: {
+    width: "100%",
+    height: "100%",
+  },
   copyright: {
     width: "100%",
     justifyContent: "center",
+    paddingHorizontal: 10,
   },
 });

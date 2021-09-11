@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 
-const MobileNav = () => {
+const MobileNav = (props) => {
   return (
     <View>
       <View style={{ width: "100%" }}>
@@ -16,7 +16,10 @@ const MobileNav = () => {
           }}
         >
           <View>
-            <TouchableOpacity style={{ paddingHorizontal: 10 }}>
+            <TouchableOpacity
+              style={{ paddingHorizontal: 10 }}
+              onPress={props.onPress}
+            >
               <Entypo name="menu" size={24} color="black" />
             </TouchableOpacity>
           </View>
@@ -27,7 +30,8 @@ const MobileNav = () => {
             }}
           >
             <View>
-              <Text style={{ fontWeight: 500 }}>Quester Studios</Text>
+              {/* <Text style={{ fontWeight: 500 }}>Quester Studios</Text> */}
+              <Text style={{ fontWeight: 500 }}>Screen Sizzle</Text>
 
               {/* <TouchableOpacity style={{ paddingHorizontal: 10 }}>
                 <Text>Home</Text>

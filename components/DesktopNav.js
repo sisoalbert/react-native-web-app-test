@@ -14,7 +14,7 @@ const DesktopNav = () => {
           }}
         >
           <View>
-            <Text style={{ fontWeight: 500 }}>Quester Studios</Text>
+            <Text style={{ fontWeight: 500 }}>Screen Sizzle</Text>
           </View>
           <View
             style={{
